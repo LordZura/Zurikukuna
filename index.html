@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animations.css" />
+  </head>
+  <body onscroll="myScrollEvent()">
+    <header id="myHeader">
+      <nav>
+        <ul>
+          <a href="#home"><li>Home</li></a>
+          <a href="#about"><li>About</li></a>
+          <a href="#projects"><li>Projects</li></a>
+          <a href="#contact"><li>Contact</li></a>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="section1 fade section" id="home">
+      <h1>Welcome to my website!</h1>
+      <p>(you wanted it simpler so yeah...)</p>
+    </section>
+
+    <section class="section2 slide-left section" id="about">
+      <h1>About me</h1>
+      <p>
+        I'm a Game Developer. I love making games and I'm pretty good at it, i
+        also try to make Webs, i seem to be mid at it.
+      </p>
+      <p>
+        (i would say more but i said a lot in previous website that was rejected
+        due to being too advanced scripted)
+      </p>
+    </section>
+
+    <section class="section3 fade section" id="projects">
+      <h1>My Projects</h1>
+      <p>I've made a lot of projects, here are some of them:</p>
+      <div class="div1">
+        <div class="projects">
+          <div>
+            <h2>Project 1</h2>
+            <p>Not showing</p>
+          </div>
+          <div>
+            <h2>Project 2</h2>
+            <p>Not showing</p>
+          </div>
+          <div>
+            <h2>Project 3</h2>
+            <p>Not showing</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div>
+      <section class="section4 fade section" id="contact">
+        <h1>Contact Me</h1>
+        <div>
+          <input
+            type="text"
+            placeholder="Name"
+            aria-label="Your Name"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            aria-label="Your Email"
+            required
+          />
+          <textarea
+            placeholder="Message"
+            aria-label="Your Message"
+            required
+          ></textarea>
+          <button type="submit" onclick="simulateSend()">Send</button>
+        </div>
+        <p
+          id="response"
+          style="color: green; font-size: 14px; margin-top: 10px"
+        ></p>
+      </section>
+    </div>
+    <script>
+      function myScrollEvent() {
+        const header = document.getElementById("myHeader");
+        const sections = document.querySelectorAll("section");
+        let headerVisible = false;
+
+        sections.forEach((section, index) => {
+          const sectionTop = section.getBoundingClientRect().top;
+          const sectionHeight = section.offsetHeight;
+
+          // Check if the top of the section is near the top of the viewport (adjust the threshold as needed)
+          if (sectionTop <= window.innerHeight && sectionTop >= 0) {
+            header.style.transition = "height 0.5s ease, opacity 0.5s ease";
+            header.style.height = ""; // Reset to original height
+            header.style.overflow = "";
+            header.style.opacity = "1"; // Fade in effect
+            headerVisible = true;
+          }
+        });
+
+        if (!headerVisible) {
+          header.style.transition = "height 0.5s ease, opacity 0.5s ease";
+          header.style.height = "0";
+          header.style.overflow = "hidden";
+          header.style.opacity = "0"; // Fade out effect
+        }
+      }
+    </script>
+  </body>
+</html>
